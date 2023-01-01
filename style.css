@@ -38,15 +38,11 @@ header {
 
     align-items: center;
     justify-content: center;
-
-    /* background-color: beige; */
 }
 
 .header-wrapper {
     padding-top: 3em;
     width: 50%;
-
-    /* background-color: aquamarine; */
 
     border-bottom: solid 1px #aabebe;
 }
@@ -91,15 +87,11 @@ ul .active a {
 
     align-items: center;
     justify-content: center;
-
-    /* background-color: bisque; */
 }
 
 .main-content {
     padding: 2em 0;
     width: 50%;
-
-    /* background-color:blue; */
 }
 
 h1 {
