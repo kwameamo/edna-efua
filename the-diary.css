@@ -125,7 +125,7 @@ h1 {
     width: 70%;
     padding: 40px;
     box-sizing: border-box;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, .5);
+    /* box-shadow: 0px 2px 10px rgba(0, 0, 0, .5); */
     border-radius: 10px;
     border: #0e1010 solid 1px;
   }
