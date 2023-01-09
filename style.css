@@ -196,6 +196,12 @@ h1 {
     font-size: 22px;
 }
 
+.new-post input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 .new-post .input-box input, .new-post textarea {
     width: 100%;
     padding: 1em;
