@@ -23,7 +23,7 @@
             <div class="navigation">
                 <ul>
                     <li class="active"><a href="#">Add Post</a></li>
-                    <li><a href="view-posts.html">View Posts</a></li>
+                    <li><a href="manage-posts.html">Manage Posts</a></li>
                     <li><a href="security.html">Security</a></li>
                 </ul>
             </div>
@@ -46,30 +46,16 @@
                 </div>
 
                 <div class="input-box">
-                    <label>Paragraph 1</label> <br>
+                    <label>Body</label> <br>
                     <textarea id="paragraph-input1" name="" required="" rows="10"></textarea>
                 </div>
 
                 <div class="input-box">
-                    <label>Paragraph 2</label> <br>
-                    <textarea id="paragraph-input2" name="" required="" rows="10"></textarea>
+                    <label>Add Thumbnail</label> <br>
+                    <input type="file" name="thumbnail" id="thumbnail" accept="image/*, .jpg, .jpeg, .png">
                 </div>
 
-                <div class="input-box">
-                    <label>Paragraph 3</label> <br>
-                    <textarea id="paragraph-input3" name="" required="" rows="10"></textarea>
-                </div>
-
-                <div>
-                    <button>Add A Paragraph</button>
-                </div> <br>
-
-                <div class="input-box">
-                    <label>Image</label> <br>
-                    <input type="file" name="blog-image" id="blog-img" accept="image/*, .jpg, .jpeg, .png">
-                </div>
-
-                <button id="publish" name="publish" type="submit">Publish</button>
+                <button id="publish" name="publish" type="submit">Add Post</button>
 
             </form>
 			<br>
