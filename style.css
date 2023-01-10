@@ -246,7 +246,7 @@ h1 {
 }
 
 .manage-posts table th {
-    background: #3e1190;
+    background: #7b3fe8;
     padding: 0.8rem;
     color: #f2f2fe;
 }
@@ -267,7 +267,7 @@ h1 {
     display: inline-block;
     width: fit-content;
     padding: 0.6rem 1.2rem;
-    background-color: #6f6af8;
+    background-color: #7b3fe8;
     border-radius:  0.5rem;
     cursor: pointer;
     transition:  all 300ms ease;
